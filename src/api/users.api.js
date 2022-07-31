@@ -1,4 +1,4 @@
-const {getAll, getById, removeById, save, update} = require('src/database/user.dao.js');
+const {getAll, getById, removeById, save, update} = require('/home/luan/Documentos/Codigos/developmentOneZero-projecttest-903563a643f6/src/database/user.dao.js');
 
 const createUser = async ({nome, email, idade}) => {
     const user = {
