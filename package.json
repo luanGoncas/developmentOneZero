@@ -22,9 +22,11 @@
   "homepage": "https://bitbucket.org/developmentOneZero/fileteste#readme",
   "dependencies": {
     "koa": "^2.13.0",
-    "koa-router": "^9.4.0"
+    "koa-router": "^9.4.0",
+    "mongodb": "^4.8.1"
   },
   "devDependencies": {
+    "@types/koa-json": "^2.0.20",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "chai-json-schema": "^1.5.1",
