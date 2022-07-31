@@ -1,7 +1,7 @@
 const users = require('./index').db('store').collection('users');
 const UserID = require('mongodb').UserID;
 
-const save = async (nome, email, idade) => {
+const save = async ({nome, email, idade}) => {
     const result = await users.insertOne({nome, email, idade});
     return result.ops[0];
 };
