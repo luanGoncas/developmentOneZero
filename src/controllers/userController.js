@@ -29,7 +29,7 @@ router.delete('/:id', async (ctx) => {
 router.put('/:id', async ctx => {
     const id = ctx.params.id;
     let user = ctx.request.body;
-    user = await updateUser(user);
+    user = await updateUser(id, user);
     ctx.response.status = 200;
     ctx.body = user;
 });
