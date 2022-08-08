@@ -13,7 +13,9 @@ const UserID = require('mongodb').ObjectId;
 // Método que cria um objeto do tipo Usuário com os atributos nome, email, e idade
 const save = async ({nome, email, idade}) => {
     const result = await users.insertOne({nome, email, idade});
-    return result.ops[0];
+    const id = result.insertedId;
+    const user = await getById(id);
+    return user;
 };
 
 // R - Read
@@ -26,8 +28,16 @@ const getAll = async () => {
 // R - Read
 // Método que informa um único usuário armazenado no banco de dados através de seu ID
 const getById = async (id) => {
+    console.log('oioioi');
     return await users.findOne({_id:UserID(id)});
 };
+
+// R - Read
+// Método que informa um único usuário armazenado no banco de dados através de seu nome
+// const getByName = async ({nome, email, idade}) => {
+//     console.log('oioioi');
+//     return await users.findOne(nome);
+// };
 
 // U - Update
 // Método que modificar os atributos de um usuário
@@ -44,5 +54,9 @@ const removeById = async id => {
     await users.deleteOne({_id:UserID(id)});
 };
 
+// DESCOMENTAR PARA APAGAR TODOS OS USUÁRIOS DO BANCO
+users.deleteMany();
+
 // Padrão do NodeJS para pegar os métodos do objeto Usuário
+//module.exports = {getAll, getById, getByName, removeById, save, update};
 module.exports = {getAll, getById, removeById, save, update};
